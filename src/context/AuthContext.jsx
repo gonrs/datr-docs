@@ -5,8 +5,9 @@ import {
 	signInWithPopup,
 	signOut,
 } from 'firebase/auth'
-import { auth } from '../firebase'
+import { auth, db } from '../firebase'
 import Loading from '../page/Loading'
+import { addDoc, collection, doc, setDoc } from 'firebase/firestore'
 const AuthContext = createContext()
 
 export function AuthProvider({ children }) {
@@ -19,11 +20,19 @@ export function AuthProvider({ children }) {
 	function logOut() {
 		signOut(auth)
 	}
+	async function addDocs(title) {
+		addDoc(collection(db, 'docs-data'), {
+			title: title,
+			author: currentUser.email,
+			body: '',
+		})
+	}
 	const value = {
 		currentUser,
 		setCurrentUser,
 		signInWithGoogle,
 		logOut,
+		addDocs,
 	}
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, user => {
@@ -32,7 +41,6 @@ export function AuthProvider({ children }) {
 		})
 		return unsubscribe
 	}, [])
-
 	return (
 		<AuthContext.Provider value={value}>
 			{loading ? <Loading /> : children}

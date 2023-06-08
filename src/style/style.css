@@ -104,6 +104,10 @@ p {
 /* Loading */
 /* header  */
 .header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
 	display: flex;
 	align-items: center;
 	padding: 15px;
@@ -135,6 +139,94 @@ p {
 /* home */
 .home {
 	height: 100vh;
+	padding-top: 70px;
+	/* background-color: var(--itemBg-color); */
+}
+.homeCreateDiv {
+	display: flex;
+	justify-content: center;
 	background-color: var(--itemBg-color);
+	padding: 20px 0;
+}
+.homeCreateBtn {
+	color: var(--text-color);
+	padding: 40px 35px;
+	background-color: var(--bg-color);
+	font-size: 90px;
+	color: #8400ff;
+}
+.homeItems {
+	width: 100%;
+	/* display: flex; */
+	padding: 20px;
+	/* justify-content: center; */
+}
+.homeItems p {
+	font-size: 17px;
+	text-align: center;
+}
+.homeItemContainer {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 30px;
+	max-width: 750px;
+	margin: 0 auto;
+	padding: 10px;
+}
+.docsItem {
+	max-width: 300px;
+	border-radius: 5px;
+	background-color: var(--itemBg-color);
+	padding: 10px 20px;
+	color: var(--text-color);
+	font-size: 15px;
+	min-width: 150px;
+}
+.homeModalContainer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background-color: var(--itemBg-color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.5);
+	transition: all 0.3s;
+}
+.homeAddModal {
+	padding: 20px 30px;
+	background-color: var(--bg-color);
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+.homeAddModal input {
+	background-color: var(--text-color);
+	color: var(--bg-color);
+	padding: 10px 10px;
+	border-radius: 10px;
+	width: 250px;
+	font-size: 15px;
+}
+.homeFlex {
+	display: flex;
+	justify-content: space-between;
+	/* margin: 0 auto; */
+	gap: 20px;
+}
+.homeModalAdd {
+	border-radius: 10px;
+	padding: 10px 15px;
+	background-color: var(--reg-color);
+	color: var(--bg-color);
+}
+.homeModalCancel {
+	border-radius: 10px;
+	padding: 10px 15px;
+	background-color: #00b7ff;
+	color: var(--bg-color);
 }
 /* home */

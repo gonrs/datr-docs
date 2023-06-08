@@ -6,8 +6,6 @@ import PrivateRoutes from './routes/PrivateRoutes'
 import { UserAuth } from './context/AuthContext'
 
 function App() {
-	const { currentUser } = UserAuth()
-	console.log(currentUser)
 	return (
 		<Routes>
 			<Route path='/' element={<Login />} />
@@ -20,7 +18,7 @@ function App() {
 				}
 			/>
 			<Route
-				path='/docs'
+				path='/document/:id'
 				element={
 					<PrivateRoutes>
 						<Docs />

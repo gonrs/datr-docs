@@ -7,9 +7,13 @@ function Header() {
 	return (
 		<div className='header'>
 			<div className='headerLogo'>
-				<h1 className='headerLogoText'>
+				<a
+					target='_blanck'
+					href='https://github.com/zim00'
+					className='headerLogoText'
+				>
 					<span> Datr</span> docs
-				</h1>
+				</a>
 			</div>
 			<div className='headerFlex'>
 				<img
