@@ -1,16 +1,10 @@
-import {
-	collection,
-	doc,
-	getDoc,
-	onSnapshot,
-	updateDoc,
-} from 'firebase/firestore'
+import { collection, doc, onSnapshot, updateDoc } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
 import { useParams } from 'react-router-dom'
 import { db } from '../firebase'
-
+import '../style/style.css'
 function Docs() {
 	const params = useParams()
 	const [editorData, setEditorData] = useState('')
@@ -23,7 +17,7 @@ function Docs() {
 			}
 		)
 		return () => document
-	}, [])
+	}, [params.id])
 
 	function handleChange(value) {
 		setEditorData(value)
@@ -35,10 +29,10 @@ function Docs() {
 			})
 		}, 1000)
 		return () => clearTimeout(updateDocument)
-	}, [editorData])
-
+	}, [editorData, params.id])
+	// qweqwe
 	return (
-		<div>
+		<div className='Docs'>
 			<ReactQuill theme='snow' value={editorData} onChange={handleChange} />
 		</div>
 	)

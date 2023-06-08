@@ -1,7 +1,9 @@
 :root {
 	--bg-color: #24242f;
+	--bg-white-color: #efefff;
 	--header-color: #2d2d39;
 	--itemBg-color: #3a3a47;
+	--itemBg-white-color: #c0c0c0;
 	--reg-color: #c4c4cf;
 	--text-color: #ffffff;
 	--fog-color: #00fff0;
@@ -114,8 +116,6 @@ p {
 	width: 100%;
 	background-color: var(--bg-color);
 	justify-content: space-between;
-}
-.headerLogo {
 }
 .headerLogoText {
 	font-size: 30px;
@@ -230,3 +230,46 @@ p {
 	color: var(--bg-color);
 }
 /* home */
+/* Docs */
+.Docs {
+}
+.Docs .ql-editor {
+	width: 8.5in;
+	min-height: 11in;
+	padding: 1in;
+	margin: 1rem;
+	/* box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); */
+	background-color: var(--itemBg-color);
+	color: #ffffff;
+}
+.Docs .ql-container.ql-snow {
+	border: none;
+	display: flex;
+	justify-content: center;
+}
+.Docs .ql-toolbar.ql-snow {
+	display: flex;
+	justify-content: center;
+	position: sticky;
+	border: none;
+	border-bottom: 2px solid var(--bg-color);
+	z-index: 1;
+	top: 0;
+	background-color: var(--itemBg-color);
+	color: #fff;
+}
+/*  */
+.Docs .ql-toolbar.ql-snow .ql-formats button svg path {
+	stroke: #fff;
+}
+.Docs .ql-toolbar.ql-snow .ql-formats .ql-italic svg line {
+	stroke: #fff;
+}
+.Docs .ql-toolbar.ql-snow .ql-formats .ql-underline.ql-active svg rect {
+	fill: #fff;
+}
+.Docs .ql-toolbar.ql-snow .ql-formats .ql-list svg line {
+	stroke: #fff;
+}
+/*  */
+/* Docs */
