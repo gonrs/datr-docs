@@ -5,6 +5,19 @@ import 'react-quill/dist/quill.snow.css'
 import { useParams } from 'react-router-dom'
 import { db } from '../firebase'
 import '../style/style.css'
+
+const TOOL_BAR_OPTIONS = [
+	[{ header: [1, 2, 3, 4, 5, 6, 7] }],
+	[{ font: [] }],
+	[{ list: 'ordered' }, { list: 'bullet' }],
+	['bold', 'italic', 'underline'],
+	[{ color: [] }, { background: [] }],
+	[{ script: 'sub' }, { script: 'super' }],
+	[{ align: [] }],
+	['image', 'blockquote', 'code-block'],
+	['clean'],
+]
+
 function Docs() {
 	const params = useParams()
 	const [editorData, setEditorData] = useState('')
@@ -33,7 +46,14 @@ function Docs() {
 	// qweqwe
 	return (
 		<div className='Docs'>
-			<ReactQuill theme='snow' value={editorData} onChange={handleChange} />
+			<ReactQuill
+				modules={{
+					toolbar: TOOL_BAR_OPTIONS,
+				}}
+				theme='snow'
+				value={editorData}
+				onChange={handleChange}
+			/>
 		</div>
 	)
 }
