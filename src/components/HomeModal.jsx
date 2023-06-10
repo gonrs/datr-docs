@@ -18,7 +18,7 @@ export default function HomeModal({ setIsAdd }) {
 		}
 		if (text.length > 30) {
 			setIsText('Title too long')
-		} 
+		}
 	}
 	return (
 		<div className='homeModalContainer'>

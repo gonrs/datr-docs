@@ -2,7 +2,7 @@ import { collection, doc, onSnapshot, updateDoc } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { db } from '../firebase'
 import '../style/style.css'
 
@@ -40,12 +40,27 @@ function Docs() {
 			updateDoc(doc(collection(db, 'docs-data'), params.id), {
 				body: editorData,
 			})
-		}, 1000)
+		}, 500)
 		return () => clearTimeout(updateDocument)
 	}, [editorData, params.id])
+	const navigate = useNavigate()
+	function goToHome() {
+		navigate('/home')
+	}
 	// qweqwe
 	return (
 		<div className='Docs'>
+			<button onClick={goToHome} className='backButton'>
+				Back
+			</button>
+			<button
+				onClick={() => {
+					window.print()
+				}}
+				className='printButton'
+			>
+				Pint
+			</button>
 			<ReactQuill
 				modules={{
 					toolbar: TOOL_BAR_OPTIONS,
@@ -53,7 +68,7 @@ function Docs() {
 				theme='snow'
 				value={editorData}
 				onChange={handleChange}
-			/>
+			></ReactQuill>
 		</div>
 	)
 }

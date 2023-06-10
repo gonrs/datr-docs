@@ -6,10 +6,14 @@ function DocsItem({ value }) {
 	function handleClick(id) {
 		navigate(`/document/${id}`)
 	}
+	function handleDel() {
+		//del function
+	}
 	return (
-		<button onClick={() => handleClick(value.id)} className='docsItem'>
-			<p>{value?.title}</p>
-		</button>
+		<div className='docsItem'>
+			<p onClick={() => handleClick(value.id)}>{value?.title}</p>
+			<button onClick={handleDel}>Del</button>
+		</div>
 	)
 }
 
