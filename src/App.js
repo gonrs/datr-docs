@@ -4,6 +4,7 @@ import Home from './page/Home'
 import Docs from './page/Docs'
 import PrivateRoutes from './routes/PrivateRoutes'
 import { UserAuth } from './context/AuthContext'
+import ErrorPage from './page/ErrorPage'
 
 function App() {
 	return (
@@ -25,6 +26,7 @@ function App() {
 					</PrivateRoutes>
 				}
 			/>
+			<Route path='/error' element={<ErrorPage />} />
 		</Routes>
 	)
 }

@@ -5,6 +5,8 @@ import 'react-quill/dist/quill.snow.css'
 import { useNavigate, useParams } from 'react-router-dom'
 import { db } from '../firebase'
 import '../style/style.css'
+import { UserAuth } from '../context/AuthContext'
+import Loading from './Loading'
 
 const TOOL_BAR_OPTIONS = [
 	[{ header: [1, 2, 3, 4, 5, 6, 7] }],
@@ -20,55 +22,71 @@ const TOOL_BAR_OPTIONS = [
 
 function Docs() {
 	const params = useParams()
-	const [editorData, setEditorData] = useState('')
-
+	const [editorData, setEditorData] = useState(null)
+	const [isLoading, setIsLoading] = useState(true)
+	const { currentUser } = UserAuth()
 	useEffect(() => {
-		const document = onSnapshot(
+		const documentUnsubscribe = onSnapshot(
 			doc(collection(db, 'docs-data'), params.id),
 			res => {
-				setEditorData(res.data().body)
+				const data = res.data()
+				if (data.author !== currentUser.email) {
+					navigate('/error')
+				} else {
+					setEditorData(data.body)
+					setIsLoading(false)
+				}
 			}
 		)
-		return () => document
-	}, [params.id])
+		return documentUnsubscribe
+	}, [currentUser.email, params.id])
 
 	function handleChange(value) {
 		setEditorData(value)
 	}
+
 	useEffect(() => {
-		const updateDocument = setTimeout(() => {
-			updateDoc(doc(collection(db, 'docs-data'), params.id), {
-				body: editorData,
-			})
+		const updateDocumentTimeout = setTimeout(() => {
+			if (editorData !== null) {
+				updateDoc(doc(collection(db, 'docs-data'), params.id), {
+					body: editorData,
+				})
+			}
 		}, 500)
-		return () => clearTimeout(updateDocument)
+		return () => clearTimeout(updateDocumentTimeout)
 	}, [editorData, params.id])
 	const navigate = useNavigate()
 	function goToHome() {
 		navigate('/home')
 	}
-	// qweqwe
+
 	return (
 		<div className='Docs'>
-			<button onClick={goToHome} className='backButton'>
-				Back
-			</button>
-			<button
-				onClick={() => {
-					window.print()
-				}}
-				className='printButton'
-			>
-				Pint
-			</button>
-			<ReactQuill
-				modules={{
-					toolbar: TOOL_BAR_OPTIONS,
-				}}
-				theme='snow'
-				value={editorData}
-				onChange={handleChange}
-			></ReactQuill>
+			{isLoading ? (
+				<Loading />
+			) : (
+				<>
+					<button onClick={goToHome} className='backButton'>
+						Back
+					</button>
+					<button
+						onClick={() => {
+							window.print()
+						}}
+						className='printButton'
+					>
+						Pint
+					</button>
+					<ReactQuill
+						modules={{
+							toolbar: TOOL_BAR_OPTIONS,
+						}}
+						theme='snow'
+						value={editorData}
+						onChange={handleChange}
+					></ReactQuill>
+				</>
+			)}
 		</div>
 	)
 }

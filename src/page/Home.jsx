@@ -33,7 +33,7 @@ function Home() {
 				setIsDocsLoading(false)
 			})
 		}
-	}, [])
+	}, [currentUser])
 
 	const [isAdd, setIsAdd] = useState(false)
 	return (

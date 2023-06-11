@@ -184,17 +184,41 @@ p {
 	min-width: 250px;
 	display: flex;
 	justify-content: space-between;
+	position: relative;
 	/* cursor: pointer; */
 }
-.docsItem button {
+.docsItemBtn {
 	color: var(--reg-color);
 	align-items: center;
+	transform: rotate(90deg);
+	font-size: 15px;
 	z-index: 3;
 }
 .docsItem p {
 	padding: 0 10px;
 	cursor: pointer;
 	text-align: left;
+}
+.openModalCon {
+	width: 120px;
+	position: absolute;
+	top: 30px;
+	right: -85px;
+	background-color: var(--bg-color);
+	border: 2px solid var(--itemBg-color);
+	z-index: 4;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+}
+.opemModalBtn {
+	color: var(--text-color);
+	font-size: 14px;
+	transition: all 0.3s;
+	padding: 8px 5px;
+}
+.opemModalBtn:hover {
+	background-color: var(--itemBg-color);
 }
 .homeModalContainer {
 	position: absolute;
