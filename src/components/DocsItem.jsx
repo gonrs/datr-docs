@@ -24,7 +24,7 @@ function DocsItem({ value }) {
 	}
 	function handleCopyLink() {
 		navigator.clipboard.writeText(
-			`http://datr-docs/document/${value.id}/view`
+			`http://datr-docs.netlify.app/document/${value.id}/view`
 		)
 		setIsOpen(false)
 	}
@@ -38,9 +38,9 @@ function DocsItem({ value }) {
 		<div className='docsItem'>
 			<p onClick={() => handleClick(value.id)}>{value?.title}</p>
 			{value?.private === false ? (
-				<img style={{ width: '25px' }} src={publicIcon} />
+				<img alt='img' style={{ width: '25px' }} src={publicIcon} />
 			) : (
-				<img style={{ width: '25px' }} src={privateIcon} />
+				<img alt='img' style={{ width: '25px' }} src={privateIcon} />
 			)}
 			<button className='docsItemBtn' onClick={() => setIsOpen(!isOpen)}>
 				...
