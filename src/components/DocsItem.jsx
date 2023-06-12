@@ -24,7 +24,7 @@ function DocsItem({ value }) {
 	}
 	function handleCopyLink() {
 		navigator.clipboard.writeText(
-			`http://localhost:3000/document/${value.id}/view`
+			`http://datr-docs/document/${value.id}/view`
 		)
 		setIsOpen(false)
 	}
