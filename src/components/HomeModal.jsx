@@ -20,6 +20,9 @@ export default function HomeModal({ setIsAdd }) {
 			setIsText('Title too long')
 		}
 	}
+	//
+
+	//
 	return (
 		<div className='homeModalContainer'>
 			<form onSubmit={handleSubmit} className='homeAddModal'>

@@ -14,8 +14,12 @@ function DocsItem({ value }) {
 		setIsOpen(false)
 		await deleteDoc(doc(db, 'docs-data', value.id))
 	}
-	function handleOpenView() {}
-	function handleCopyLink() {}
+	function handleOpenView() {
+		navigate(`/document/${value.id}/view`)
+	}
+	function handleCopyLink() {
+		navigator.clipboard.writeText(`/document/${value.id}/view`)
+	}
 	return (
 		<div className='docsItem'>
 			<p onClick={() => handleClick(value.id)}>{value?.title}</p>

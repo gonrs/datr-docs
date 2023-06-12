@@ -25,6 +25,7 @@ function Docs() {
 	const [editorData, setEditorData] = useState(null)
 	const [isLoading, setIsLoading] = useState(true)
 	const { currentUser } = UserAuth()
+	const navigate = useNavigate()
 	useEffect(() => {
 		const documentUnsubscribe = onSnapshot(
 			doc(collection(db, 'docs-data'), params.id),
@@ -39,7 +40,7 @@ function Docs() {
 			}
 		)
 		return documentUnsubscribe
-	}, [currentUser.email, params.id])
+	}, [currentUser.email, params.id, navigate])
 
 	function handleChange(value) {
 		setEditorData(value)
@@ -55,7 +56,6 @@ function Docs() {
 		}, 500)
 		return () => clearTimeout(updateDocumentTimeout)
 	}, [editorData, params.id])
-	const navigate = useNavigate()
 	function goToHome() {
 		navigate('/home')
 	}

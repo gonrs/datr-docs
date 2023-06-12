@@ -3,8 +3,8 @@ import Login from './page/Login'
 import Home from './page/Home'
 import Docs from './page/Docs'
 import PrivateRoutes from './routes/PrivateRoutes'
-import { UserAuth } from './context/AuthContext'
 import ErrorPage from './page/ErrorPage'
+import ViewDocs from './page/ViewDocs'
 
 function App() {
 	return (
@@ -23,6 +23,14 @@ function App() {
 				element={
 					<PrivateRoutes>
 						<Docs />
+					</PrivateRoutes>
+				}
+			></Route>
+			<Route
+				path='/document/:id/view'
+				element={
+					<PrivateRoutes>
+						<ViewDocs />
 					</PrivateRoutes>
 				}
 			/>
