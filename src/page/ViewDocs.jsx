@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { db } from '../firebase'
 import Loading from './Loading'
 import { UserAuth } from '../context/AuthContext'
+import ReactQuill from 'react-quill'
 
 function ViewDocs() {
 	const params = useParams()
@@ -31,12 +32,7 @@ function ViewDocs() {
 			{isLoading ? (
 				<Loading />
 			) : (
-				<>
-					<div
-						dangerouslySetInnerHTML={{ __html: textData }}
-						className='ViewDocs'
-					></div>
-				</>
+				<ReactQuill value={textData} readOnly={true}></ReactQuill>
 			)}
 		</div>
 	)
