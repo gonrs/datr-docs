@@ -232,8 +232,10 @@ p {
 	align-items: center;
 	background-color: rgba(0, 0, 0, 0.5);
 	transition: all 0.3s;
+	z-index: 5;
 }
 .homeAddModal {
+	width: 310px;
 	padding: 20px 30px;
 	background-color: var(--bg-color);
 	border-radius: 10px;
@@ -473,6 +475,7 @@ p {
 	align-items: center;
 	flex-direction: column;
 	padding: 5px 10px;
+	word-wrap: break-word;
 }
 .ViewDocs {
 	width: 8.5in;

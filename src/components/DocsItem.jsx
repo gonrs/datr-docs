@@ -15,10 +15,14 @@ function DocsItem({ value }) {
 		await deleteDoc(doc(db, 'docs-data', value.id))
 	}
 	function handleOpenView() {
+		setIsOpen(false)
 		navigate(`/document/${value.id}/view`)
 	}
 	function handleCopyLink() {
-		navigator.clipboard.writeText(`/document/${value.id}/view`)
+		navigator.clipboard.writeText(
+			`http://localhost:3000/document/${value.id}/view`
+		)
+		setIsOpen(false)
 	}
 	return (
 		<div className='docsItem'>
@@ -31,11 +35,11 @@ function DocsItem({ value }) {
 					<button onClick={handleDel} className='opemModalBtn'>
 						Delete
 					</button>
-					<button onClick={handleCopyLink} className='opemModalBtn'>
-						Copy view link
-					</button>
 					<button onClick={handleOpenView} className='opemModalBtn'>
 						Open view
+					</button>
+					<button onClick={handleCopyLink} className='opemModalBtn'>
+						Copy view link
 					</button>
 				</div>
 			)}

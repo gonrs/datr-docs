@@ -3,7 +3,6 @@ import { UserAuth } from '../context/AuthContext'
 
 function Header() {
 	const { logOut, currentUser } = UserAuth()
-	console.log(currentUser.photoURL)
 	return (
 		<div className='header'>
 			<div className='headerLogo'>

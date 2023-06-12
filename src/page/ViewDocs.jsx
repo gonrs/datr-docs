@@ -11,16 +11,14 @@ function ViewDocs() {
 	const [isLoading, setIsLoading] = useState(true)
 	const navigate = useNavigate()
 	const { currentUser } = UserAuth()
-	console.log(params.id)
 	useEffect(() => {
 		const documentUnsubscribe = onSnapshot(
 			doc(collection(db, 'docs-data'), params.id),
 			res => {
 				const data = res.data()
-				if (data.author !== currentUser.email) {
+				if (data.author !== currentUser.email && data.private === true) {
 					navigate('/error')
 				} else {
-					console.log(data.body)
 					setTextData(data.body)
 					setIsLoading(false)
 				}

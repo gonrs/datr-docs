@@ -20,10 +20,11 @@ export function AuthProvider({ children }) {
 	function logOut() {
 		signOut(auth)
 	}
-	async function addDocs(title) {
+	async function addDocs(title, isPrivate) {
 		addDoc(collection(db, 'docs-data'), {
 			title: title,
 			author: currentUser.email,
+			private: isPrivate,
 			body: '',
 		})
 	}
