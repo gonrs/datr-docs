@@ -7,7 +7,7 @@ import {
 } from 'firebase/auth'
 import { auth, db } from '../firebase'
 import Loading from '../page/Loading'
-import { addDoc, collection, doc, setDoc } from 'firebase/firestore'
+import { addDoc, collection } from 'firebase/firestore'
 const AuthContext = createContext()
 
 export function AuthProvider({ children }) {

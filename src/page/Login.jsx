@@ -16,7 +16,7 @@ function Login() {
 		if (currentUser) {
 			navigate('/home')
 		}
-	}, [currentUser])
+	}, [currentUser, navigate])
 
 	return (
 		<div className='login container'>
