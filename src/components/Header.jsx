@@ -8,7 +8,7 @@ function Header() {
 			<div className='headerLogo'>
 				<a
 					target='_blanck'
-					href='https://github.com/zim00'
+					href='https://github.com/gonrs'
 					className='headerLogoText'
 				>
 					<span> Datr</span> docs
